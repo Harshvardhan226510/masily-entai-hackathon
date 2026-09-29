@@ -1,35 +1,35 @@
-# MINT Ops - Enterprise AI Infrastructure Platform
+# Masily (Manage Easily) - Enterprise AI Infrastructure Platform
 
 ## Problem Statement
-Infrastructure project management across multiple sites relies on fragmented communication (WhatsApp, email), unstructured data (spreadsheets), and manual audits. This leads to budget leaks, inability to effectively compare vendor quotations, and zero reliable tracking of daily site progress, causing delays and financial losses.
+Large-scale infrastructure and construction projects suffer from fragmented communication, unstructured data, and manual site audits. This disconnect between field operations and the project management office leads to severe budget leaks, inability to effectively normalize and compare vendor quotations, and zero reliable tracking of daily site progress, resulting in costly delays.
 
 ## Solution Description
-MINT Ops is an AI-Native Infrastructure Project Management Platform designed to enforce invariant budgets, automate vendor analysis, and perform multimodal verification of daily site progress. 
+**Masily (Manage Easily)** is an AI-Native Enterprise Project Management Platform built to enforce invariant budgets, automate vendor analysis, and perform multimodal AI verification of daily site progress. 
 
-Key AI Integrations (Gemini 1.5 Flash):
-1. **AI Vendor Decision Matrix**: Normalizes unstructured multi-vendor quotations, assigns a cost efficiency score, and flags contract risks automatically.
-2. **Multimodal Site Auditor**: Audits site engineer's daily photo uploads against their claimed completion percentage, identifying discrepancies and detecting safety hazards.
+Key AI Integrations (Powered by Google Gemini 2.5 Flash):
+1. **AI Vendor Decision Matrix**: Automatically normalizes unstructured, multi-vendor quotations, assigns a commercial value score, and flags contract risks through multi-dimensional vector analysis.
+2. **Multimodal Site Auditor**: Audits site engineers' daily visual evidence uploads against their claimed completion percentages, identifying visual discrepancies and automatically detecting critical safety hazards (e.g., exposed wiring).
 3. **BOQ Budget Integrity Engine**: Hard-enforces budget freezes and prevents programmatic disbursements if they breach the approved capital envelope.
 
 ## Tech Stack
-- Frontend: React.js (Vite), Tailwind CSS, Lucide React
-- Backend: Node.js, Express.js, MongoDB (Mongoose), Zod, JWT
-- AI: Google Gemini API (@google/generative-ai)
+- **Frontend**: React.js, Vite, Tailwind CSS, Recharts, Lucide React
+- **Backend**: Node.js, Express.js, MongoDB (Mongoose), Zod, JWT
+- **AI Integration**: Google Gemini API (`@google/generative-ai`)
 
 ## Local Setup
 
 ### 1. Database
-Make sure you have MongoDB running locally or a MongoDB Atlas URI.
+Ensure you have a MongoDB cluster running or use a MongoDB Atlas URI.
 
 ### 2. Backend Setup
 ```bash
 cd backend
 npm install
 cp .env.example .env
-# Edit .env and add your GEMINI_API_KEY
-npm run dev # or node index.js
+# Edit .env and add your GEMINI_API_KEY and MONGODB_URI
+npm run dev
 ```
-Seed the database:
+To seed the initial data:
 ```bash
 node seed.js
 ```
@@ -43,26 +43,27 @@ npm run dev
 ```
 
 ### Demo Accounts
-- PM (Project Manager): `pm@entai.com` / `password123`
-- Site Engineer: `engineer@entai.com` / `password123`
+- **Project Manager**: `pm@entai.com` | Pass: `password123`
+- **Site Engineer**: `engineer@entai.com` | Pass: `password123`
 
-## Deployment Instructions
+## Vercel Deployment Guide
 
-### Backend (Render / Railway)
-1. Push your repository to GitHub.
-2. Connect your GitHub repository to Render/Railway.
-3. Set the Environment Variables in the platform's dashboard:
-   - `PORT`: 5000
-   - `MONGODB_URI`: Your MongoDB Atlas connection string
-   - `JWT_SECRET`: A strong secret key
-   - `GEMINI_API_KEY`: Your Google Gemini API Key
-4. Build Command: `npm install`
-5. Start Command: `node index.js`
+To deploy this application to the web:
 
-### Frontend (Vercel)
-1. Import the repository into Vercel.
-2. Set the Root Directory to `frontend`.
-3. Framework Preset: Vite.
-4. Add Environment Variable:
-   - `VITE_API_URL`: Your deployed backend URL (e.g., `https://mint-ops-backend.onrender.com/api`)
-5. Click Deploy.
+### 1. Deploy the Backend (Render / Railway)
+Since Vercel is optimized for frontends, deploy your Node.js backend to a service like Render:
+1. Create a New Web Service on Render and connect your GitHub repo.
+2. Set the Root Directory to `backend`.
+3. Build Command: `npm install`
+4. Start Command: `node index.js`
+5. Add Environment Variables: `PORT`, `MONGODB_URI`, `JWT_SECRET`, `GEMINI_API_KEY`.
+6. Deploy and copy your backend URL (e.g., `https://masily-backend.onrender.com`).
+
+### 2. Deploy the Frontend (Vercel)
+1. Go to Vercel and import your GitHub repository.
+2. Set the **Framework Preset** to `Vite`.
+3. Set the **Root Directory** to `frontend`.
+4. In Environment Variables, add:
+   - Name: `VITE_API_URL`
+   - Value: `https://masily-backend.onrender.com/api` *(replace with your actual Render URL + /api)*
+5. Click **Deploy**.
