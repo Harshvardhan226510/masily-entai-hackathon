@@ -36,9 +36,9 @@ export default function VendorMatrix() {
   const analyzeQuotations = async () => {
     setAnalyzing(true);
     try {
-      // Simulate API call for testing PDF export to save tokens
-      await new Promise(resolve => setTimeout(resolve, 800));
-      setAiSummary("This is a simulated AI Executive Summary generated to test the PDF Export feature without consuming expensive API tokens.\n\nAfter a comprehensive evaluation of vendor quotations for critical enterprise infrastructure projects, the system successfully parsed and normalized the RFQ data. The recommendation is based on their superior overall value proposition, reflected in the highest cost efficiency score among all analyzed proposals. The recommended vendor demonstrated exceptional quality, proposing industry-leading equipment, combined with a robust risk aversion score, underscored by highly favorable payment terms. Their normalized total offers excellent value given the high-grade components and mitigated risk profile.");
+      const { data } = await api.post('/ai/compare-quotations', { projectId });
+      setQuotations(data.quotations);
+      setAiSummary(data.summary);
       setShowModal(true);
       setViewMode('radar');
     } catch (err) {
