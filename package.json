@@ -1,0 +1,17 @@
+{
+  "name": "entai",
+  "version": "1.0.0",
+  "description": "Infrastructure project management across multiple sites relies on fragmented communication (WhatsApp, email), unstructured data (spreadsheets), and manual audits. This leads to budget leaks, inability to effectively compare vendor quotations, and zero reliable tracking of daily site progress, causing delays and financial losses.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
